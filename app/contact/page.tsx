@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PHONE } from "@/lib/data";
+import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact - Get Your Cash Offer",
@@ -62,15 +63,11 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Right: JotForm */}
+          {/* Right: Salesforce form */}
           <div style={{ flex: "1 1 0", minWidth: 0 }}>
-            <iframe
-              id="JotFormIFrame-240295194097059"
-              title="Contact Form"
-              src="https://form.jotform.com/240295194097059"
-              style={{ width: "100%", height: "750px", border: "none", display: "block" }}
-              scrolling="no"
-            />
+            <div className="bg-white border border-rule rounded-[6px] p-8">
+              <ContactForm />
+            </div>
           </div>
 
         </div>
