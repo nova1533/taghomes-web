@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { PHONE } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -63,10 +62,15 @@ export default function ContactPage() {
           </div>
 
           {/* Right: JotForm embed */}
-          <div className="bg-white border border-rule rounded-[6px] p-8 min-h-[400px]">
-            <Script
-              src="https://form.jotform.com/jsform/240295194097059"
-              strategy="lazyOnload"
+          <div className="rounded-[6px] overflow-hidden border border-rule">
+            <iframe
+              id="JotFormIFrame-240295194097059"
+              title="Contact Form"
+              src="https://form.jotform.com/240295194097059"
+              width="100%"
+              height="700"
+              style={{ border: "none" }}
+              scrolling="no"
             />
           </div>
         </div>
