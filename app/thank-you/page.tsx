@@ -8,27 +8,50 @@ export const metadata: Metadata = {
 
 export default function ThankYouPage() {
   return (
-    <section className="bg-cream min-h-[60vh] flex items-center">
-      <div className="max-w-[1280px] mx-auto px-14 py-20 max-[900px]:px-6 text-center">
-        <p className="text-[11px] uppercase tracking-[0.22em] text-tag-blue-deep mb-6">
-          got it
+    <section className="bg-cream min-h-[70vh] flex items-center justify-center">
+      <div className="max-w-lg mx-auto px-8 py-16 text-center">
+
+        {/* Checkmark circle */}
+        <div className="w-16 h-16 rounded-full bg-tag-blue-soft flex items-center justify-center mx-auto mb-8">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M6 14l6 6 10-12" stroke="#4f7bc7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+
+        <p className="text-[11px] uppercase tracking-[0.22em] text-tag-blue-deep mb-4">
+          form received
         </p>
+
         <h1
-          className="font-serif text-ink mb-6"
-          style={{ fontSize: "clamp(40px, 4.6vw, 64px)" }}
+          className="font-serif text-ink mb-5"
+          style={{ fontSize: "clamp(36px, 4vw, 56px)" }}
         >
-          We&apos;ll be in <em>touch</em> soon.
+          Thank <em>you!</em>
         </h1>
-        <p className="text-[18px] leading-[1.55] text-ink-soft mb-10 max-w-md mx-auto">
-          Thanks for reaching out. Someone from our team will contact you within
-          24 hours with a fair, no-obligation cash offer.
+
+        <p className="text-[17px] leading-[1.6] text-ink-soft mb-3">
+          Our team will be in touch with you soon.
         </p>
-        <Link
-          href="/"
-          className="inline-block px-8 py-3.5 rounded-full bg-tag-blue text-white text-[14px] font-medium hover:bg-tag-blue-deep transition-all hover:-translate-y-px"
-        >
-          back to home
-        </Link>
+        <p className="text-[15px] leading-[1.6] text-ink-mute mb-10">
+          We typically respond within a few hours during business hours. We look
+          forward to learning more about your property.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Link
+            href="/"
+            className="px-8 py-3.5 rounded-full bg-tag-blue text-white text-[14px] font-medium hover:bg-tag-blue-deep transition-all hover:-translate-y-px"
+          >
+            return to site
+          </Link>
+          <Link
+            href="/how-it-works"
+            className="px-8 py-3.5 rounded-full border border-rule text-ink-soft text-[14px] font-medium hover:border-tag-blue-deep hover:text-tag-blue-deep transition-all"
+          >
+            how it works →
+          </Link>
+        </div>
+
       </div>
     </section>
   );
