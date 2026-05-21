@@ -51,7 +51,7 @@ export default function AboutPage() {
             style={{ aspectRatio: "3/2" }}
           >
             <Image
-              src={TEAM[0].img}
+              src="/team-photo.jpg"
               alt="The TAG Homes team"
               fill
               className="object-cover"
