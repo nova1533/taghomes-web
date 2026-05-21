@@ -32,9 +32,10 @@ export default function ContactPage() {
       </section>
 
       <section className="max-w-[1280px] mx-auto px-14 py-16 max-[900px]:px-6 max-[900px]:py-10">
-        <div className="grid grid-cols-2 gap-16 items-start max-[900px]:grid-cols-1 max-[900px]:gap-10">
+        <div style={{ display: "flex", gap: "64px", alignItems: "flex-start" }} className="max-[900px]:flex-col max-[900px]:gap-10">
+
           {/* Left: info */}
-          <div>
+          <div style={{ flex: "0 0 360px" }} className="max-[900px]:flex-auto">
             <p className="text-[16px] leading-[1.55] text-ink-soft mb-8">
               Fill out the form and we&apos;ll be in touch within 24 hours with a
               fair, no-obligation cash offer. No repairs required, no fees, no
@@ -61,18 +62,17 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Right: JotForm embed */}
-          <div className="rounded-[6px] overflow-hidden border border-rule">
+          {/* Right: JotForm */}
+          <div style={{ flex: "1 1 0", minWidth: 0 }}>
             <iframe
               id="JotFormIFrame-240295194097059"
               title="Contact Form"
               src="https://form.jotform.com/240295194097059"
-              width="100%"
-              height="700"
-              style={{ border: "none" }}
+              style={{ width: "100%", height: "750px", border: "none", display: "block" }}
               scrolling="no"
             />
           </div>
+
         </div>
       </section>
     </>
