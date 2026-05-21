@@ -15,8 +15,6 @@ export default function ContactForm() {
       {/* Hidden Salesforce fields */}
       <input type="hidden" name="oid" value="00D8c000000eP47" />
       <input type="hidden" name="retURL" value="https://taghomes-web.vercel.app/thank-you" />
-      <input type="hidden" name="debug" value="1" />
-      <input type="hidden" name="debugEmail" value="boz@taghomes.co" />
 
       {/* First + Last name row */}
       <div className="grid grid-cols-2 gap-4">
@@ -48,10 +46,10 @@ export default function ContactForm() {
 
       {/* Phone */}
       <div>
-        <label htmlFor="phone_field" className={labelClass}>Phone Number</label>
+        <label htmlFor="phone" className={labelClass}>Phone Number</label>
         <input
-          id="phone_field"
-          name="00N8c00000SxoyA"
+          id="phone"
+          name="phone"
           type="tel"
           maxLength={40}
           required
@@ -73,31 +71,55 @@ export default function ContactForm() {
         />
       </div>
 
-      {/* Property street */}
+      {/* Property address */}
       <div>
-        <label htmlFor="property_street" className={labelClass}>Property Street Address</label>
-        <textarea
-          id="property_street"
-          name="00N8Y00000MZBSU"
+        <label htmlFor="street" className={labelClass}>Property Street Address</label>
+        <input
+          id="street"
+          name="street"
+          type="text"
+          maxLength={255}
           required
           placeholder="123 Main St"
-          rows={2}
-          className={`${inputClass} resize-none`}
+          className={inputClass}
         />
       </div>
 
-      {/* Property city */}
-      <div>
-        <label htmlFor="property_city" className={labelClass}>Property City</label>
-        <input
-          id="property_city"
-          name="00N8Y00000MZBSS"
-          type="text"
-          maxLength={200}
-          required
-          placeholder="Oklahoma City"
-          className={inputClass}
-        />
+      <div className="grid grid-cols-3 gap-4">
+        <div className="col-span-1">
+          <label htmlFor="city" className={labelClass}>City</label>
+          <input
+            id="city"
+            name="city"
+            type="text"
+            maxLength={40}
+            required
+            placeholder="Edmond"
+            className={inputClass}
+          />
+        </div>
+        <div>
+          <label htmlFor="state" className={labelClass}>State</label>
+          <input
+            id="state"
+            name="state"
+            type="text"
+            maxLength={20}
+            defaultValue="OK"
+            className={inputClass}
+          />
+        </div>
+        <div>
+          <label htmlFor="zip" className={labelClass}>Zip</label>
+          <input
+            id="zip"
+            name="zip"
+            type="text"
+            maxLength={20}
+            placeholder="73034"
+            className={inputClass}
+          />
+        </div>
       </div>
 
       {/* Submit */}
