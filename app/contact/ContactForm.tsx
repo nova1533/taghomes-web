@@ -15,6 +15,8 @@ export default function ContactForm() {
       {/* Hidden Salesforce fields */}
       <input type="hidden" name="oid" value="00D8c000000eP47" />
       <input type="hidden" name="retURL" value="https://taghomes-web.vercel.app/thank-you" />
+      <input type="hidden" name="debug" value="1" />
+      <input type="hidden" name="debugEmail" value="boz@taghomes.co" />
 
       {/* First + Last name row */}
       <div className="grid grid-cols-2 gap-4">
