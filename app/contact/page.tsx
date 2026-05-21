@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { PHONE } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -62,15 +63,11 @@ export default function ContactPage() {
           </div>
 
           {/* Right: JotForm embed */}
-          <div className="bg-white border border-rule rounded-[6px] p-8 min-h-[400px] flex items-center justify-center">
-            <div className="text-center">
-              <p className="text-[13px] uppercase tracking-[0.1em] text-ink-mute mb-2">
-                Contact Form
-              </p>
-              <p className="text-[14px] text-ink-soft">
-                Add your JotForm embed code here.
-              </p>
-            </div>
+          <div className="bg-white border border-rule rounded-[6px] p-8 min-h-[400px]">
+            <Script
+              src="https://form.jotform.com/jsform/240295194097059"
+              strategy="lazyOnload"
+            />
           </div>
         </div>
       </section>
