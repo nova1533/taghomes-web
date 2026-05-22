@@ -11,19 +11,19 @@ export const TEAM = [
   {
     name: "Boz",
     role: "Founder",
-    img: "https://static.showit.co/400/ZLRsZqBSSay5O3Q0jidcGg/241213/bozteamshots-48.jpg",
+    img: "/boz.jpg",
     bio: "I've spent the past 6 years as a full-time real estate investor, after years as a financial analyst while doing real estate on the side. I call East Edmond home with my wife and four kids. I'm part of one of the country's most respected real estate masterminds and stay on the cutting edge of new information and technology so that we can better serve our customers. Outside of work and family I love traveling, exploring in nature, reading and trying to stay fit.",
   },
   {
     name: "Chelsea",
     role: "Home Buying Specialist",
-    img: "https://static.showit.co/400/gvUD6gqFRly-SAVcxvsl_A/241213/bozteamshots-15.jpg",
+    img: "/chelsea.jpg",
     bio: "Oklahoma born and raised. My love for design pulled me into this industry and my background in psychology helps me listen to the problems our clients are facing and come up with a solution to fit their needs. I've been with TAG Homes for over 3 years and outside of work you'll find me with my dog Margot, friends and family, at the gym or a pilates class.",
   },
   {
     name: "Colton",
     role: "Buyer Relations Manager",
-    img: "https://static.showit.co/400/6_zQZP-gT8Khw-cRlzAR2g/241213/bozteamshots-3.jpg",
+    img: "/colton.jpg",
     bio: "Oral Roberts University grad with a business degree and an MBA. I got started in real estate by investing in my own properties, managing properties for others and getting my real estate license. I've been with TAG Homes over 3 years now and outside of work I play too much soccer, watch sports, and parent my two pups with my wife.",
   },
 ];
