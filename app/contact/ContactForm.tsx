@@ -1,4 +1,6 @@
 "use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const inputClass =
   "w-full px-4 py-3 rounded-[6px] border border-rule text-[15px] text-ink placeholder:text-ink-mute focus:outline-none focus:border-tag-blue-deep transition-colors bg-white";
@@ -6,17 +8,42 @@ const inputClass =
 const labelClass = "block text-[12px] uppercase tracking-[0.1em] text-ink-mute mb-1.5";
 
 export default function ContactForm() {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    const form = e.currentTarget;
+    const data = {
+      first_name: (form.elements.namedItem("first_name") as HTMLInputElement).value,
+      last_name: (form.elements.namedItem("last_name") as HTMLInputElement).value,
+      phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      lead_source: "Website",
+      property_street: (form.elements.namedItem("property_street") as HTMLInputElement).value,
+      property_city: (form.elements.namedItem("property_city") as HTMLInputElement).value,
+      property_state: (form.elements.namedItem("property_state") as HTMLInputElement).value,
+      property_zip: (form.elements.namedItem("property_zip") as HTMLInputElement).value,
+    };
+
+    try {
+      await fetch("https://hooks.zapier.com/hooks/catch/11767374/4oapmvq/", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      router.push("/thank-you");
+    } catch {
+      setError("Something went wrong. Please call us directly or try again.");
+      setLoading(false);
+    }
+  }
+
   return (
-    <form
-      action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00D8c000000eP47"
-      method="POST"
-      className="flex flex-col gap-5"
-    >
-      {/* Hidden Salesforce fields */}
-      <input type="hidden" name="oid" value="00D8c000000eP47" />
-      <input type="hidden" name="retURL" value="https://taghomes-web.vercel.app/thank-you" />
-      <input type="hidden" name="debug" value="1" />
-      <input type="hidden" name="debugEmail" value="boz@taghomes.co" />
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
 
       {/* First + Last name row */}
       <div className="grid grid-cols-2 gap-4">
@@ -73,12 +100,12 @@ export default function ContactForm() {
         />
       </div>
 
-      {/* Property address */}
+      {/* Property street */}
       <div>
-        <label htmlFor="street" className={labelClass}>Property Street Address</label>
+        <label htmlFor="property_street" className={labelClass}>Property Street Address</label>
         <input
-          id="street"
-          name="street"
+          id="property_street"
+          name="property_street"
           type="text"
           maxLength={255}
           required
@@ -87,49 +114,56 @@ export default function ContactForm() {
         />
       </div>
 
+      {/* City / State / Zip */}
       <div className="grid grid-cols-3 gap-4">
         <div className="col-span-1">
-          <label htmlFor="city" className={labelClass}>City</label>
+          <label htmlFor="property_city" className={labelClass}>City</label>
           <input
-            id="city"
-            name="city"
+            id="property_city"
+            name="property_city"
             type="text"
-            maxLength={40}
+            maxLength={200}
             required
             placeholder="Edmond"
             className={inputClass}
           />
         </div>
         <div>
-          <label htmlFor="state" className={labelClass}>State</label>
+          <label htmlFor="property_state" className={labelClass}>State</label>
           <input
-            id="state"
-            name="state"
+            id="property_state"
+            name="property_state"
             type="text"
-            maxLength={20}
+            maxLength={200}
             defaultValue="OK"
             className={inputClass}
           />
         </div>
         <div>
-          <label htmlFor="zip" className={labelClass}>Zip</label>
+          <label htmlFor="property_zip" className={labelClass}>Zip</label>
           <input
-            id="zip"
-            name="zip"
+            id="property_zip"
+            name="property_zip"
             type="text"
-            maxLength={20}
+            maxLength={200}
             placeholder="73034"
             className={inputClass}
           />
         </div>
       </div>
 
+      {/* Error message */}
+      {error && (
+        <p className="text-[13px] text-red-500">{error}</p>
+      )}
+
       {/* Submit */}
       <button
         type="submit"
-        className="mt-2 w-full px-6 py-4 rounded-full bg-tag-blue text-white text-[14px] font-medium tracking-[0.02em] hover:bg-tag-blue-deep transition-all hover:-translate-y-px"
+        disabled={loading}
+        className="mt-2 w-full px-6 py-4 rounded-full bg-tag-blue text-white text-[14px] font-medium tracking-[0.02em] hover:bg-tag-blue-deep transition-all hover:-translate-y-px disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        get your offer
+        {loading ? "sending..." : "get your offer"}
       </button>
 
       <p className="text-[12px] text-ink-mute text-center">
